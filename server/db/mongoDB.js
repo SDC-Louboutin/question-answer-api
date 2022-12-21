@@ -32,25 +32,6 @@ let answerSchema = mongoose.Schema({
 let Question = mongoose.model('Questions', questionSchema);
 let Answer = mongoose.model('Answers', answerSchema);
 
-// let saveQuestions = (items) => {
-
-//   items.forEach((repo) => {
-//     // console.log('repo is : ', repo);
-//     Repo.create({
-//       repo_id: repo.id,
-//       repo_name:repo.name,
-//       owner: repo.owner.login,
-//       url:repo.owner.html_url,
-//       fork_count:repo.forks_count,
-//       description:repo.description
-//     }, (err, result) => {
-//       if (err) {
-//         console.log('Duplicate item, do nothing');
-//       }
-//     });
-//   })
-// }
-
 
 
 
