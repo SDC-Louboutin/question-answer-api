@@ -1,0 +1,8 @@
+id
+product_id
+q_body
+q_date
+asker_name
+asker_email
+q_reported
+q_helpful
