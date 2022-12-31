@@ -16,6 +16,14 @@ fs.createReadStream('answers_photos.csv')
     console.log('photos is finished');
   });
 
+// insert initial row for meta table
+db.Meta.create({
+  id:1,
+  question_count:240000,
+  answer_count:6900000
+})
+.then(() => {console.log('insert initial row for meta table')})
+.catch(() => {console.log('initial row insertion error')})
 
 //read questions csv
 // fs.createReadStream('question.csv')
