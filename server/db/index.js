@@ -40,7 +40,9 @@ let metaSchema = mongoose.Schema({
 
 const Question = mongoose.model('questions', questionSchema);
 const Answer = mongoose.model('answers', answerSchema);
+const AnswerD = mongoose.model('answersds', answerSchema);
 const Meta = mongoose.model('metas', metaSchema);
+
 
 // // insert into meta table
 // let question_count = 0;
@@ -60,6 +62,7 @@ const Meta = mongoose.model('metas', metaSchema);
 module.exports.Question = Question;
 module.exports.Answer = Answer;
 module.exports.Meta = Meta;
+module.exports.AnswerD = AnswerD;
 
 
 
