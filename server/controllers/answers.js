@@ -25,7 +25,7 @@ module.exports = {
     });
   },
   voteAnswer: function (req, res) {
-    models.answers.voteAnswer(function(err, results) {
+    models.answers.voteAnswer(req.params.answer_id,function(err, results) {
       if (err) {
         console.error('Unable to vote answer in the database: ', err);
         res.sendStatus(500);

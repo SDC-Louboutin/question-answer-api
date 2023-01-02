@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
+var debug = require('debug')('question')
 
+mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://127.0.0.1/q_a', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-mongoose.set('strictQuery', true)
-
+debug('start question db')
 let questionSchema = mongoose.Schema({
 
   id: {type: Number, required: true, unique: true},
   product_id: Number,
   body: String,
-  date_written: String,
+  date_written: Number,
   asker_name: String,
   asker_email: String,
   reported: Number,
@@ -24,7 +24,7 @@ let answerSchema = mongoose.Schema({
   id: {type: Number, required: true, unique: true},
   question_id: Number,
   body: String,
-  date_written: Date,
+  date_written: Number,
   answerer_name: String,
   answerer_email:String,
   reported: Number,
@@ -39,30 +39,21 @@ let metaSchema = mongoose.Schema({
 });
 
 const Question = mongoose.model('questions', questionSchema);
+debug('end question db ')
 const Answer = mongoose.model('answers', answerSchema);
 const AnswerD = mongoose.model('answersds', answerSchema);
 const Meta = mongoose.model('metas', metaSchema);
-
-
-// // insert into meta table
-// let question_count = 0;
-// let answer_count = 0;
-
-// Question.countDocuments({})
-// .then((result) => {
-//   question_count = result;
-//   Answer.countDocuments({})
-// .then((result) => {
-//   answer_count = result;
-//   console.log('the count is : ', question_count, answer_count);
-//   Meta.create({id: 1,question_count:question_count, answer_count:answer_count}).then(() => {console.log('result is of create meta table')})
-// })
-// })
+let new_id = 0;
+Meta.find({id:1}).then((result) => {
+  new_id = result[0].question_count;
+})
 
 module.exports.Question = Question;
 module.exports.Answer = Answer;
 module.exports.Meta = Meta;
 module.exports.AnswerD = AnswerD;
+module.exports.new_id = new_id;
+
 
 
 
