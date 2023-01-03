@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 var debug = require('debug')('question')
 
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://127.0.0.1/q_a', {
+mongoose.connect(process.env.DB_MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
