@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 //var debug = require('debug')('question')
 
 mongoose.set('strictQuery', true);
-mongoose.connect(process.env.DB_MONGO, {
+// mongoose.connect(process.env.DB_MONGO, {
+mongoose.connect('mongodb://54.201.232.222:27017/q_a', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
