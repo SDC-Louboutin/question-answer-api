@@ -1,20 +1,20 @@
 var models = require('../models');
-var debug = require('debug')('question');
+//var debug = require('debug')('question');
 
 // debug('start question controller');
 
 module.exports = {
 
   getQuestions: function (req, res) {
-    debug('start question controller')
-    debug(req.method + ' ' + req.url);
+    //debug('start question controller')
+    //debug(req.method + ' ' + req.url);
     models.questions.getQuestions(req.query.product_id,req.query.count, req.query.page, function(err, results) {
       if (err) {
         console.error('Unable to retrieve questions from the database: ', err);
         res.sendStatus(500);
       } else {
         //console.log('result is : ',results);
-        debug('end of question controller')
+        //debug('end of question controller')
         res.json(results);
       }
     });
