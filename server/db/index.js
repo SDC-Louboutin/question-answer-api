@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
-var debug = require('debug')('question')
+//var debug = require('debug')('question')
 
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.DB_MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-debug('start question db')
+//debug('start question db')
 let questionSchema = mongoose.Schema({
 
   id: {type: Number, required: true, unique: true},
-  product_id: Number,
+  product_id: {type:Number,index:true},
   body: String,
   date_written: Number,
   asker_name: String,
@@ -22,7 +22,7 @@ let questionSchema = mongoose.Schema({
 let answerSchema = mongoose.Schema({
 
   id: {type: Number, required: true, unique: true},
-  question_id: Number,
+  question_id: {type: Number,index:true},
   body: String,
   date_written: Number,
   answerer_name: String,
@@ -41,23 +41,8 @@ let metaSchema = mongoose.Schema({
 const Question = mongoose.model('questions', questionSchema);
 debug('end question db ')
 const Answer = mongoose.model('answers', answerSchema);
-const AnswerD = mongoose.model('answersds', answerSchema);
 const Meta = mongoose.model('metas', metaSchema);
-let new_id = 0;
-Meta.find({id:1}).then((result) => {
-  new_id = result[0].question_count;
-})
 
 module.exports.Question = Question;
 module.exports.Answer = Answer;
 module.exports.Meta = Meta;
-module.exports.AnswerD = AnswerD;
-module.exports.new_id = new_id;
-
-
-
-
-
-
-
-
