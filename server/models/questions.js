@@ -1,16 +1,16 @@
 const { result } = require('lodash');
 var db = require('../db');
-var debug = require('debug')('question');
+//var debug = require('debug')('question');
 
 module.exports = {
 
   getQuestions: function (product_id, count = 5, page = 1, callback) {
-    debug('start question model')
+    //debug('start question model')
     // fetch all questions
     db.Question.find({ product_id: product_id, reported: 0 }).limit(count)
       .then((result) => {
         //console.log('get question result is : ', result);
-        debug('end question model')
+        //debug('end question model')
         callback(null, result);
       })
       .catch((error) => {
